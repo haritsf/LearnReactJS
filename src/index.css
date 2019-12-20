@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.App {
+  text-align: center;
+}
+
 .card {
   border: 1pt solid #eee ;
   border-radius: 15px;
