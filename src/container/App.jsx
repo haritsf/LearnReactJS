@@ -1,36 +1,41 @@
-import React from 'react';
-import Card from './Card';
-// import './../index.css';
+import React, {Component, Fragment} from 'react';
+import Card from '../component/Card';
+import HelloComponent from '../component/HelloComponent';
+import StatefullComponent from '../component/StatefullComponent';
 import '../assets/css/bootstrap.css';
-// import '../assets/js/custom.js';
 
-class App extends React.Component {
+class App extends Component {
   render () {
     return (
-      <fragment>
-        <div className="container">
-          <div className="row">
+      <Fragment>
+          <div className="row" style={{textAlign: 'center'}}>
+          <div className="col-lg-12">
+            <HelloComponent />
+          </div>
+          <div className="col-lg-12">
+            <StatefullComponent />
+          </div>
             <div className="col-lg-12">
               <Card
                 name="Harits Fathuddin"
-                role="FrontEnd"
                 nim="21120115130074" />
               <Card
                 name="Aufal Marom"
-                role="BackEnd"
                 nim="21120115130069" />
               <Card 
-                name="M. Adinugroho" 
-                role="DevOps"
+                name="M. Adinugroho"
                 nim="21120115140063" />
               <Card 
                 name="Mukhlish A. Aziz" 
-                role="Network Engineer"
+                nim="21120115130052" />
+            </div>
+            <div className="col-lg-12">
+              <Card 
+                name="Mukhlish A. Aziz" 
                 nim="21120115130052" />
             </div>
           </div>
-        </div>
-      </fragment>
+      </Fragment>
     )
   }
 }
