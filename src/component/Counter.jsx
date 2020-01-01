@@ -1,23 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        angka: 5
+        angka: 0
+    }
+
+    handleCounterChange = (newValue) => {
+        this.props.onCounterChange(newValue);
     }
 
     handlePlus = () => {
         // console.log('plus : ', this)
         this.setState({
         angka: this.state.angka + 1
-        })
+        }, () => {
+            this.handleCounterChange(this.state.angka);
+        });
     }
 
     handleMinus = () => {
         // console.log('minus : ', this)
         if (this.state.angka > 0) {
-        this.setState({
-            angka: this.state.angka - 1
-        })
+            this.setState({
+                angka: this.state.angka - 1
+            }, () => {
+                this.handleCounterChange(this.state.angka);
+            }); 
         }
     }
 
@@ -38,7 +46,7 @@ class Counter extends Component {
                     </div>
                 </div>
             </div>
-        )
+            );
         }
     }
 

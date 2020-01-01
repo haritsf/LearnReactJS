@@ -1,60 +1,173 @@
 import React, {Component, Fragment} from 'react';
-import Card from '../component/Card';
+// import Card from '../component/Card';
 import HelloComponent from '../component/HelloComponent';
 import StatefullComponent from '../component/StatefullComponent';
-import Counter from '../component/Counter';
-import '../assets/css/bootstrap.css';
+// import Counter from '../component/Counter';
+import DataTables from '../component/DataTables';
+// import DataLog from '../component/DataLog';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css";
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import {
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  FormInput,
+  Collapse
+} from "shards-react";
 
 class App extends Component {
   state = {
-    angka: 5
+    angka: 0
   }
 
-  handlePlus = () => {
-    // console.log('plus : ', this)
+  constructor(props) {
+    super(props);
+
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+
+    this.state = {
+      dropdownOpen: false,
+      collapseOpen: false
+    };
+  }
+
+  toggleDropdown() {
     this.setState({
-      angka: this.state.angka + 1
-    })
+      ...this.state,
+      ...{
+        dropdownOpen: !this.state.dropdownOpen
+      }
+    });
   }
 
-  handleMinus = () => {
-    // console.log('minus : ', this)
-    if (this.state.angka > 0) {
-      this.setState({
-        angka: this.state.angka - 1
-      })
-    }
+  toggleNavbar() {
+    this.setState({
+      ...this.state,
+      ...{
+        collapseOpen: !this.state.collapseOpen
+      }
+    });
+  }
+
+  handleCounterChange = (newValue) => {
+    this.setState({
+      angka: newValue
+    });
   }
 
   render () {
     return (
-      <Fragment>
+      <BrowserRouter>
+        <Fragment>
+            {/* <div className="row" style={{textAlign: 'center'}}>
+              <div className="col-lg-12">
+                <HelloComponent />
+                <h1><span className="badge badge-primary" style={{borderRadius: 15 + 'px'}}>{this.state.angka}</span></h1>
+              </div>
+              
+              <div className="col-lg-12">
+                <StatefullComponent />
+              </div>
+              
+              <div className="col-lg-12">
+                <Card
+                  name="Harits Fathuddin"
+                  nim="21120115130074" />
+                <Card
+                  name="Aufal Marom"
+                  nim="21120115130069" />
+                <Card 
+                  name="M. Adinugroho"
+                  nim="21120115140063" />
+                <Card 
+                  name="Mukhlish A. Aziz" 
+                  nim="21120115130052" />
+              </div>
+              
+              <Counter onCounterChange={(value) => this.handleCounterChange(value)} />
+            
+            </div> */}
+            
+        {/* <DataTables/> */}
+        <div className="container">
           <div className="row" style={{textAlign: 'center'}}>
-          <div className="col-lg-12">
-            <HelloComponent />
-            <h1><span className="badge badge-primary" style={{borderRadius: 15 + 'px'}}>{this.state.angka}</span></h1>
-          </div>
-          <div className="col-lg-12">
-            <StatefullComponent />
-          </div>
             <div className="col-lg-12">
-              <Card
-                name="Harits Fathuddin"
-                nim="21120115130074" />
-              <Card
-                name="Aufal Marom"
-                nim="21120115130069" />
-              <Card 
-                name="M. Adinugroho"
-                nim="21120115140063" />
-              <Card 
-                name="Mukhlish A. Aziz" 
-                nim="21120115130052" />
+              <HelloComponent />
+              <Navbar type="dark" theme="primary" expand="md">
+                <NavbarBrand href="#">Shards React</NavbarBrand>
+                <NavbarToggler onClick={this.toggleNavbar} />
+
+                <Collapse open={this.state.collapseOpen} navbar>
+                  <Nav navbar>
+                    <NavItem>
+                      <NavLink active href="#">
+                        Active
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="#" disabled>
+                        Disabled
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <Link className="nav-link" to="/">Home</Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link className="nav-link" to="/data">Data</Link>
+                    </NavItem>
+                    <Dropdown open={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+                      <DropdownToggle nav caret>
+                        Dropdown
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>Action</DropdownItem>
+                        <DropdownItem>Another action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                  </Nav>
+
+                  <Nav navbar className="ml-auto">
+                    <InputGroup size="sm" seamless>
+                      <InputGroupAddon type="prepend">
+                        <InputGroupText>
+
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <FormInput className="border-0" placeholder="Search..." />
+                    </InputGroup>
+                  </Nav>
+                </Collapse>
+              </Navbar>
+              {/* <h1><span className="badge badge-primary" style={{borderRadius: 15 + 'px'}}>{this.state.angka}</span></h1> */}
+
+              {/* <Link to="/">Home</Link>
+              <Link to="/data">Data</Link> */}
+
+              {/* <Link to="/counter">Counter</Link> */}
+              <Route path="/" exact component={StatefullComponent} />
+              <Route path="/data" component={DataTables} />
+              {/* <Route path="/counter" component={Counter} /> */}
             </div>
-            <Counter />
           </div>
-      </Fragment>
-    )
+        </div>
+        </Fragment>
+      </BrowserRouter>
+    );
   }
 }
 
