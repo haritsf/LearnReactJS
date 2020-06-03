@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import reactlogo from "../images/logo192.png";
 
 const HelloComponent = () => {
     return (
-        <h1 className="pt-3">Hello World</h1>
+        <Fragment>
+            <h1>React App</h1>
+            <div className="product-by">
+                <p>Powered By <img src={reactlogo} width="30px" alt="React Logo" /></p>
+            </div>
+        </Fragment>
     )
 }
 
