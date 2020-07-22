@@ -2,13 +2,13 @@ import React, { Component, Fragment } from "react";
 import CardWrapper from "../component/CardWrapper";
 import HelloComponent from "../component/HelloComponent";
 import DataTables from "../component/DataTables";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 import logo from "../images/logo_spectrum.png";
+import Post from "../component/blog/BlogWrapper";
 
 class App extends Component {
+  // eslint-disable-next-line
   constructor() {
     super();
   }
@@ -33,6 +33,7 @@ class App extends Component {
                     <Link className="btn btn-sm btn-outline-primary btn-pill" to="/">Home</Link>
                     <Link className="btn btn-sm btn-outline-dark btn-pill ml-1" to="/data">Data</Link>
                     <Link className="btn btn-sm btn-outline-dark btn-pill ml-1" to="/card">Card</Link>
+                    <Link className="btn btn-sm btn-outline-dark btn-pill ml-1" to="/blog">Blog</Link>
                   </div>
                 </div>
               </div>
@@ -63,6 +64,7 @@ class App extends Component {
               {/* <Route path="/" exact component={HelloComponent} /> */}
               <Route path="/data" component={DataTables} />
               <Route path="/card" component={CardWrapper} />
+              <Route path="/blog" component={Post} />
             </div>
           </div>
         </Fragment>

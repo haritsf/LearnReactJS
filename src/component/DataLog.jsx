@@ -3,13 +3,11 @@ import React from 'react';
 const DataLog = (props) => {
     return (
         <tr style={{textAlign : 'center'}}>
-            <td>{props.nomor}</td>
-            <td>{props.waktu}</td>
-            <td>{props.senti}</td>
-            <td>{props.inchi}</td>
-            <td>{props.judul}</td>
-            <td>{props.desc}</td>
-            <td><button className="btn btn-md btn-outline-warning">Edit</button></td>
+            <td>{props.bus}</td>
+            <td>{props.jalur}</td>
+            <td>{props.lat}</td>
+            <td>{props.long}</td>
+            <td><a href={props.id} className="btn btn-md btn-outline-warning">Edit</a></td>
         </tr>    
     )
 }

@@ -6,7 +6,7 @@ const Card = props => {
       className="card mx-2 my-3"
       style={{
         textAlign: "center",
-        display: "inline-block",
+        display: "inline-flex",
         width: 250 + "px"
       }}
     >
