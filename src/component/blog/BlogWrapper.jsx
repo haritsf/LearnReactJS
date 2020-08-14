@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import FormWrapper from "./FormWrapper";
 import PostWrapper from "./PostWrapper";
+// import FormWrapper from "./FormWrapper";
 
 class BlogWrapper extends Component {
   render() {
@@ -10,7 +10,6 @@ class BlogWrapper extends Component {
         <h4 className="lead text-left">
           <b>Blog Post</b>
         </h4>
-        <FormWrapper></FormWrapper>
         <PostWrapper></PostWrapper>
       </Fragment>
     );
